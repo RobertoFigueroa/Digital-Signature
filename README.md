@@ -10,7 +10,7 @@ Librerias requeridas:
 La libreria se instala corriendo el siguiente comando:
 
     pip install pycryptodome
-# Como funciona?
+
 
 
     

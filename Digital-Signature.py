@@ -1,6 +1,6 @@
 #Librerias utilizadas
 from Crypto.PublicKey import RSA
-from hashlib import sha512
+from hashlib import sha256
 
 message = b'ola k ase'
 print("El mensaje es:", message)
@@ -13,9 +13,9 @@ nAlice=aliceKey.n
 bobKey = RSA.generate(bits=1024)
 publicKeyBob=bobKey.e
 privateKeyBob=bobKey.d
-nBob=bobKeys.n
+nBob=bobKey.n
 
-hash = int.from_bytes(sha512(message).digest(), byteorder='big')
+hash = int.from_bytes(sha256(message).digest(), byteorder='big')
 #luego se firman con la misma llave privada de alice
 signature = pow(hash, privateKeyAlice,nAlice)
 print("la firma del mensaje es:", hex(signature))
@@ -31,6 +31,6 @@ decryptedMessage = intDecryptedMessage.to_bytes((intDecryptedMessage.bit_length(
 print("El mensaje decriptado es: ",decryptedMessage)
 
 #Ahora se verifica si el mensaje es valido 
-hash = int.from_bytes(sha512(decryptedMessage).digest(), byteorder='big')
+hash = int.from_bytes(sha256(decryptedMessage).digest(), byteorder='big')
 hashFromSignature = pow(signature, publicKeyAlice, nAlice)
 print("Firma valida:", hash == hashFromSignature)
